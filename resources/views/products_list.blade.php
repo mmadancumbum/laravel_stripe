@@ -21,7 +21,7 @@
                             <td>{{ $prod['name'] }}</td>
                             <td>{{ $prod['price'] }}</td>
                             <td>{{ $prod['description'] }}</td>
-                            <td style="text-align:center;width:150px"><a class="btn btn-primary" href="{{ url('productDetail/'.$prod->id) }}">Buy Now</a></td>
+                            <td style="text-align:center;width:150px"><a class="btn btn-primary" href="{{url('payment/'.$prod['name'].'/'.$prod['price'])}}">Buy Now</a></td>
                         </tr>
                     @endforeach 
                 </tbody>

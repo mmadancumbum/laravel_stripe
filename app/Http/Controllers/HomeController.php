@@ -26,5 +26,6 @@ class HomeController extends Controller
     {
         $products['products'] = Products::all();
         return view('products_list', $products);
+        //return view('home');
     }
 }

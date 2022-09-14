@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\PaymentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,8 +26,14 @@ Auth::routes();
 
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('productDetail/{id}', [ProductController::class, 'productDetail'])->name('productDetail');
-Route::post('/buyproduct', [ProductController::class, 'productBuy'])->name('buynow');
+
+Route::middleware("auth")->group(function () 
+{
+    Route::get('/payment/{string}/{price}', [PaymentController::class, 'charge'])->name('goToPayment');
+    Route::post('payment/process-payment/{string}/{price}', [PaymentController::class, 'processPayment'])->name('processPayment');
+});
+
+
     
 
 
